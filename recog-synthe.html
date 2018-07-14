@@ -27,7 +27,7 @@
 		recog.addEventListener('result', function(e) {
 			console.log(e);
 			tv.innerText = e.results[0][0].transcript;
-		}
+		});
 		
 		function speech(){
 			console.log('speech');
