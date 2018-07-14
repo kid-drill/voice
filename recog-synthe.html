@@ -30,10 +30,12 @@
 		}
 		
 		function speech(){
+			console.log('speech');
 			recog.start();
 		}
 		
 		function speak(){
+			console.log('speak');
 			//speechSynthesis.speak(new SpeechSynthesisUtterance(tv.innerText));
 			speechSynthesis.speak(new SpeechSynthesisUtterance('こんにちは'));
 		}
