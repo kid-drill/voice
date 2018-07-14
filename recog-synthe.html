@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Voice Recognition & Synthesis</title>
+	<style>
+		body {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h3>Voice Recognition & Synthesis</h3>
+	<form name="js">
+	<button id="btn-recog" onclick="speech()"><img src="img/microphone-on.png" alt="Voice Recognition Start"></button>
+	<br>
+	<input id="txt-voice" type="text" value="">
+	<br>
+	<button id="btn-synthe" onclick="speak()"><img src="img/speaker-on.png" alt="Voice Synthesis Start"></button>
+	</form>
+	<script type="text/javascript">
+		var tv = document.getElementById('txt-voice');
+			
+		var recog = new webkitSpeechRecognition();
+		recog.lang = 'ja-JP';
+		
+		recog.addEventListener('result', function(e) {
+			console.log(e);
+			tv.innerText = e.results[0][0].transcript;
+		}
+		
+		function speech(){
+			recog.start();
+		}
+		
+		function speak(){
+			//speechSynthesis.speak(new SpeechSynthesisUtterance(tv.innerText));
+			speechSynthesis.speak(new SpeechSynthesisUtterance('‚±‚ñ‚É‚¿‚Í'));
+		}
+	</script>
+</body>
+</htm>
