@@ -11,32 +11,30 @@
 </head>
 <body>
 	<h3>Voice Recognition & Synthesis</h3>
-	<form name="js">
-	<button id="btn-recog" onclick="speech();"><img src="img/microphone-on.png" alt="Voice Recognition Start"></button>
+	<button id="btn-recog"><img src="img/microphone-on.png" alt="Recognition Start"></button>
 	<br>
 	<input id="txt-voice" type="text" value="こんばんは">
 	<br>
-	<button id="btn-synthe" onclick="speak();"><img src="img/speaker-on.png" alt="Voice Synthesis Start"></button>
-	</form>
+	<button id="btn-synthe" onclick="speak();"><img src="img/speaker-on.png" alt="Synthesis Start"></button>
 	<script type="text/javascript">
-		var tv = document.getElementById('txt-voice');
+		var btr = document.getElementById('btn-recog');
+		var txv = document.getElementById('txt-voice');
 			
 		var recog = new webkitSpeechRecognition();
 		recog.lang = 'ja-JP';
 		
-		recog.addEventListener('result', function(e) {
-			console.log(e);
-			tv.innerText = e.results[0][0].transcript;
+		btr.addEventListener('click', function() {
+			recog.start();
 		});
 		
-		function speech(){
-			console.log('speech');
-			recog.start();
-		}
+		recog.addEventListener('result', function(e) {
+			console.log(e);
+			txv.value = e.results[0][0].transcript;
+		});
 		
 		function speak(){
-			console.log(tv.innerText);
-			//speechSynthesis.speak(new SpeechSynthesisUtterance(tv.innerText));
+			console.log(txv.value);
+			speechSynthesis.speak(new SpeechSynthesisUtterance(txv.value));
 			//speechSynthesis.speak(new SpeechSynthesisUtterance('こんにちは'));
 		}
 	</script>
