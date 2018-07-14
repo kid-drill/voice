@@ -12,11 +12,11 @@
 <body>
 	<h3>Voice Recognition & Synthesis</h3>
 	<form name="js">
-	<button id="btn-recog" onclick="speech()"><img src="img/microphone-on.png" alt="Voice Recognition Start"></button>
+	<button id="btn-recog" onclick="speech();"><img src="img/microphone-on.png" alt="Voice Recognition Start"></button>
 	<br>
-	<input id="txt-voice" type="text" value="">
+	<input id="txt-voice" type="text" value="こんばんは">
 	<br>
-	<button id="btn-synthe" onclick="speak()"><img src="img/speaker-on.png" alt="Voice Synthesis Start"></button>
+	<button id="btn-synthe" onclick="speak();"><img src="img/speaker-on.png" alt="Voice Synthesis Start"></button>
 	</form>
 	<script type="text/javascript">
 		var tv = document.getElementById('txt-voice');
@@ -35,9 +35,9 @@
 		}
 		
 		function speak(){
-			console.log('speak');
+			console.log(tv.innerText);
 			//speechSynthesis.speak(new SpeechSynthesisUtterance(tv.innerText));
-			speechSynthesis.speak(new SpeechSynthesisUtterance('こんにちは'));
+			//speechSynthesis.speak(new SpeechSynthesisUtterance('こんにちは'));
 		}
 	</script>
 </body>
